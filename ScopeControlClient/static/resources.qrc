@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/logo">
+        <file>rocket.ico</file>
+    </qresource>
+    <qresource prefix="/crosshair">
+        <file>crosshair black.svg</file>
+        <file>crosshair red.svg</file>
+    </qresource>
+</RCC>
