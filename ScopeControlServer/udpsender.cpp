@@ -1,8 +1,8 @@
 #include "udpsender.h"
 
-UdpSender::UdpSender(QHostAddress to_ip, quint16 to_port, QObject *parent) : QObject(parent) {
-    ip = to_ip;
-    port = to_port;
+UdpSender::UdpSender(QHostAddress _to_ip, quint16 _to_port, QObject *parent) : QObject(parent) {
+    ip = _to_ip;
+    port = _to_port;
 }
 
 UdpSender::~UdpSender() {

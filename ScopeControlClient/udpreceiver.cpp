@@ -1,7 +1,7 @@
 #include "udpreceiver.h"
 
-UdpReceiver::UdpReceiver(quint16 listening_port, QObject *parent) : QObject(parent) {
-    port = listening_port;
+UdpReceiver::UdpReceiver(quint16 _listening_port, QObject *parent) : QObject(parent) {
+    port = _listening_port;
     datagram = nullptr;
 }
 

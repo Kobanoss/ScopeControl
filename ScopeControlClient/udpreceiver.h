@@ -8,7 +8,7 @@ class UdpReceiver : public QObject
 {
     Q_OBJECT
 public:
-    explicit UdpReceiver(quint16 listening_port, QObject *parent = nullptr);
+    explicit UdpReceiver(quint16 _listening_port, QObject *parent = nullptr);
     ~UdpReceiver();
 
 private:
@@ -23,7 +23,6 @@ public slots:
 
 private slots:
     void _init();
-
 
 signals:
     void _killThread();

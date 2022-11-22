@@ -23,6 +23,7 @@ Widget::~Widget() {
     QTimer::singleShot(1000, this, [this] () {
         delete ui;
     });
+    QThread::sleep(1);
 }
 
 

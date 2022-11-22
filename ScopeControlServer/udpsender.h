@@ -9,7 +9,7 @@ class UdpSender : public QObject
     Q_OBJECT
 
 public:
-    explicit UdpSender(QHostAddress to_ip, quint16 to_port, QObject *parent = nullptr);
+    explicit UdpSender(QHostAddress _to_ip, quint16 _to_port, QObject *parent = nullptr);
     ~UdpSender();
 
 
