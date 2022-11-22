@@ -24,7 +24,6 @@ void PainterWidget::paintEvent(QPaintEvent*) {
     qreal abs_offset_y = offset_y * height()/2;
 
     scope_scale = THOUSANDS_IN_SCOPE/(image_angle/(qreal(360)/6000));
-    qDebug() << scope_scale;
 
     painter.scale(scope_scale, scope_scale);
     painter.translate((1/scope_scale - 1) * width()/2, (1/scope_scale - 1) * height()/2);

@@ -5,7 +5,6 @@
 #include <QString>
 #include <QPainter>
 #include <QSvgRenderer>
-#include <QDebug>
 
 #define THOUSANDS_IN_SCOPE qreal(20)
 
