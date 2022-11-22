@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QUdpSocket>
 
+
 class UdpSender : public QObject
 {
     Q_OBJECT

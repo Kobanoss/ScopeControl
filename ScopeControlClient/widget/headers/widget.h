@@ -6,11 +6,9 @@
 #include <QThread>
 #include <QTimer>
 #include <QMap>
-#include <udpreceiver.h>
-#include <painterwidget.h>
+#include "custom/UdpReceiver/headers/udpreceiver.h"
+#include "custom/PainterWidget/headers/painterwidget.h"
 
-#define LISTENING_PORT 50000
-#define FIXED_AR qreal(0.75)
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -25,21 +23,20 @@ public:
     ~Widget();
 
 private:
-    qreal angle = 2;
-    qreal offset_v{};
-    qreal offset_h{}; 
+    qreal angle;
+    qreal offset_v;
+    qreal offset_h;
 
     QThread* rec_thread;
     UdpReceiver* receiver;
 
     PainterWidget* painter_widget;
+
     QMap<quint8, QString> stylesheet_map;
     QMap<quint8, QString> scope_path_map;
 
     void getDatagram(QByteArray datagram);
-
     void setLabels();
-
     void calculateScopeGeometry();
 
     void resizeEvent(QResizeEvent*);
@@ -48,6 +45,7 @@ private:
 
 signals:
     void _killReceiver();
+
     void changeScopeColor(QString path);
     void changeScopeGeometry(qreal offset_h, qreal offset_v, qreal angle);
 

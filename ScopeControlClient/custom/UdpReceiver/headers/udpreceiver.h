@@ -4,8 +4,8 @@
 #include <QObject>
 #include <QUdpSocket>
 
-class UdpReceiver : public QObject
-{
+
+class UdpReceiver : public QObject {
     Q_OBJECT
 public:
     explicit UdpReceiver(quint16 _listening_port, QObject *parent = nullptr);

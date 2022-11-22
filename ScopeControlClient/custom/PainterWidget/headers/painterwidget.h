@@ -6,7 +6,6 @@
 #include <QPainter>
 #include <QSvgRenderer>
 
-#define THOUSANDS_IN_SCOPE qreal(20)
 
 class PainterWidget : public QWidget {
     Q_OBJECT
@@ -15,10 +14,10 @@ public:
     explicit PainterWidget(QString _scope_path, QWidget *parent = nullptr);
 
 private:
-    int scope_size;
+    int center_crosshair_size;
     QString path;
-    qreal offset_x{};
-    qreal offset_y{};
+    qreal offset_x;
+    qreal offset_y;
     qreal scope_scale;
     qreal image_angle;
 

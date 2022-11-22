@@ -1,4 +1,5 @@
-#include "udpsender.h"
+#include "headers/udpsender.h"
+
 
 UdpSender::UdpSender(QHostAddress _to_ip, quint16 _to_port, QObject *parent) : QObject(parent) {
     ip = _to_ip;
@@ -12,6 +13,7 @@ UdpSender::~UdpSender() {
 
 }
 
+
 void UdpSender::_init() {
     socket = new QUdpSocket;
 }
@@ -20,6 +22,7 @@ void UdpSender::_kill() {
     emit _killThread();
     this->~UdpSender();
 }
+
 
 void UdpSender::send(QByteArray datagram) {
     socket->writeDatagram(datagram, ip, port);

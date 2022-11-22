@@ -10,12 +10,13 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    udpsender.cpp \
-    widget.cpp
+    custom/UdpSender/udpsender.cpp \
+    widget/widget.cpp
 
 HEADERS += \
-    udpsender.h \
-    widget.h
+    config/conf.h \
+    custom/UdpSender/headers/udpsender.h \
+    widget/headers/widget.h
 
 FORMS += \
     ui/widget.ui

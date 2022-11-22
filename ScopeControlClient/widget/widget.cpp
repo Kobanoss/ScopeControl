@@ -1,8 +1,14 @@
-#include "widget.h"
+#include "headers/widget.h"
 #include "ui_widget.h"
+#include "config/conf.h"
+
 
 Widget::Widget(QWidget *parent): QWidget(parent), ui(new Ui::Widget) {
     ui->setupUi(this);
+
+    angle = BASE_ANGLE;
+    offset_h = BASE_OFFSET_X;
+    offset_v = BASE_OFFSET_Y;
 
     stylesheet_map = {{0, "grey"},
                       {1, "white"},
@@ -10,8 +16,6 @@ Widget::Widget(QWidget *parent): QWidget(parent), ui(new Ui::Widget) {
 
     scope_path_map = {{0, ":/crosshair/crosshair red.svg"},
                       {1, ":/crosshair/crosshair black.svg"}};
-
-
 
     rec_thread = new QThread;
     receiver = new UdpReceiver(LISTENING_PORT);
@@ -30,19 +34,16 @@ Widget::Widget(QWidget *parent): QWidget(parent), ui(new Ui::Widget) {
     connect(this, &Widget::changeScopeGeometry, painter_widget, &PainterWidget::updateScopeGeometry);
     ui->gridLayout_image->addWidget(painter_widget);
 
-
-
     painter_widget->repaint();
 }
 
 Widget::~Widget() {
     delete painter_widget;
     emit _killReceiver();
-    QTimer::singleShot(1000, this, [this] () {
-        delete ui;
-    });
-    QThread::sleep(1);
+    rec_thread->wait();
+    delete ui;
 }
+
 
 void Widget::getDatagram(QByteArray datagram) {
     QString data = QString(datagram);
@@ -57,7 +58,6 @@ void Widget::getDatagram(QByteArray datagram) {
 void Widget::calculateScopeGeometry() {
     emit changeScopeGeometry(offset_h, offset_v, angle);
 }
-
 
 void Widget::setLabels() {
     ui->label_value_Angle->setText(QString::number(angle));
@@ -97,6 +97,7 @@ void Widget::resizeEvent(QResizeEvent*) {
     return;
 }
 
+
 void Widget::on_comboBox_background_activated(int index) {
     ui->widget_image->setStyleSheet("background-color:"+stylesheet_map.value(index));
 }
@@ -105,5 +106,3 @@ void Widget::on_comboBox_background_activated(int index) {
 void Widget::on_comboBox_crosshair_color_activated(int index){
     emit changeScopeColor(scope_path_map.value(index));
 }
-
-

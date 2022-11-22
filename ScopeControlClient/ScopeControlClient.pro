@@ -10,14 +10,15 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    painterwidget.cpp \
-    udpreceiver.cpp \
-    widget.cpp
+    custom/PainterWidget/painterwidget.cpp \
+    custom/UdpReceiver/udpreceiver.cpp \
+    widget/widget.cpp
 
 HEADERS += \
-    painterwidget.h \
-    udpreceiver.h \
-    widget.h
+    config/conf.h \
+    custom/PainterWidget/headers/painterwidget.h \
+    custom/UdpReceiver/headers/udpreceiver.h \
+    widget/headers/widget.h
 
 FORMS += \
     ui/widget.ui

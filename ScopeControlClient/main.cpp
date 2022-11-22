@@ -1,6 +1,5 @@
-#include "widget.h"
-
 #include <QApplication>
+#include "widget/headers/widget.h"
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);

@@ -5,10 +5,8 @@
 #include <QThread>
 #include <QUdpSocket>
 #include <QTimer>
-#include <udpsender.h>
+#include "custom/UdpSender/headers/udpsender.h"
 
-#define RECEIVER_IP QHostAddress::LocalHost
-#define RECEIVER_PORT 50000
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -29,9 +27,9 @@ private slots:
     void on_horizontalSlider_OffsetH_valueChanged(int value);
 
 private:
-    qreal angle = 2;
-    qreal offset_v{};
-    qreal offset_h{};
+    qreal angle;
+    qreal offset_v;
+    qreal offset_h;
 
     QThread* sending_thread;
     UdpSender* sender;

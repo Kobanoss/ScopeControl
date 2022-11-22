@@ -1,8 +1,14 @@
-#include "widget.h"
+#include "headers/widget.h"
 #include "ui_widget.h"
+#include "config/conf.h"
+
 
 Widget::Widget(QWidget *parent): QWidget(parent), ui(new Ui::Widget) {
     ui->setupUi(this);
+
+    angle = BASE_ANGLE;
+    offset_h = BASE_OFFSET_X;
+    offset_v = BASE_OFFSET_Y;
 
     sending_thread = new QThread;
     sender = new UdpSender(RECEIVER_IP, RECEIVER_PORT);
@@ -20,10 +26,8 @@ Widget::Widget(QWidget *parent): QWidget(parent), ui(new Ui::Widget) {
 
 Widget::~Widget() {
     emit _killSender();
-    QTimer::singleShot(1000, this, [this] () {
-        delete ui;
-    });
-    QThread::sleep(1);
+    sending_thread->wait();
+    delete ui;
 }
 
 
